@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,16 +15,36 @@
     </header>
 
     <div class="filters">
-      <input type="date" id="startDate" />
-      <input type="date" id="endDate" />
-      <button>Get Space Images</button>
+      <input type="date" id="startDate" aria-label="Start date" />
+      <input type="date" id="endDate" aria-label="End date" />
+      <button id="getImagesBtn">Get Space Images</button>
     </div>
 
+    <!-- Random Space Fact -->
+    <section class="space-fact">
+      <h2>🚀 Did You Know?</h2>
+      <p id="randomFact"></p>
+    </section>
+
+    <!-- NASA Image Gallery -->
     <div id="gallery" class="gallery">
       <div class="placeholder">
         <div class="placeholder-icon">🔭</div>
         <p>Select a date range and click "Get Space Images" to explore the cosmos!</p>
       </div>
+    </div>
+  </div>
+
+  <!-- Modal Window -->
+  <div id="imageModal" class="modal" role="dialog"
+       aria-modal="true" aria-label="Space image details"
+       hidden>
+    <div class="modal-content">
+      <button id="closeModal" aria-label="Close modal">×</button>
+      <h2 id="modalTitle"></h2>
+      <img id="modalImage" alt="" />
+      <p id="modalDate"></p>
+      <p id="modalExplanation"></p>
     </div>
   </div>
 

@@ -1,144 +1,308 @@
-/* Global reset & box sizing */
+
+/* Global reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Base page styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f1f1f1;
+  background: linear-gradient(135deg, #06152f, #102a55);
+  color: #ffffff;
+  min-height: 100vh;
   padding: 20px;
 }
 
-/* Centered container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Header */
+/* NASA Header */
 .site-header {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  gap: 15px;
+  padding: 25px 0;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  width: 140px;
+  max-width: 100%;
 }
 
 h1 {
   font-family: Verdana, sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
   font-weight: bold;
-  color: #212121;
+  color: #ffffff;
 }
 
-/* Logo */
-.logo {
-  width: 140px;
-  margin-right: 15px;
-}
-
-/* Date‐picker & button row */
+/* Date Filters */
 .filters {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   justify-content: center;
-  margin-bottom: 20px;
-  padding: 0 20px;
+  margin-bottom: 25px;
 }
 
-/* Inputs and buttons */
 input[type="date"],
-button {
+.filters button {
   font-family: Arial, sans-serif;
-  font-weight: normal;
-  color: #666;
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 13px 16px;
+  border-radius: 8px;
+  border: 1px solid #b8c9e0;
   font-size: 16px;
-  line-height: 1.4;
   width: 100%;
 }
 
-/* Button specific */
-button {
-  background-color: #d3d3d3;
-  color: black;
+input[type="date"] {
+  background-color: #ffffff;
+  color: #14213d;
+}
+
+.filters button {
+  background-color: #e03c31;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
   cursor: pointer;
-}
-button:hover {
-  background-color: #bfbfbf;
-}
-
-/* Stack horizontally on wider screens */
-@media (min-width: 600px) {
-  .filters {
-    flex-direction: row;
-    padding: 0;
-  }
-  
-  input[type="date"],
-  button {
-    width: auto;
-  }
+  transition: background-color 0.3s ease,
+              transform 0.3s ease;
 }
 
-/* Gallery flex container */
+.filters button:hover {
+  background-color: #b82d25;
+  transform: translateY(-2px);
+}
+
+.filters button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* Random Space Fact */
+.space-fact {
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 5px solid #e03c31;
+  padding: 22px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.space-fact h2 {
+  color: #ffffff;
+  font-size: 23px;
+  margin-bottom: 12px;
+}
+
+.space-fact p {
+  color: #dce8fa;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Gallery */
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
+  gap: 22px;
+  padding: 20px 0;
   justify-content: center;
 }
 
-/* Gallery items */
+/* Gallery Cards */
 .gallery-item {
-  flex: 1 1 100%;  /* full width by default */
-  min-width: 280px;
+  flex: 1 1 100%;
+  min-width: 0;
   max-width: 500px;
-  background: white;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background-color: #ffffff;
+  color: #172b4d;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  transition: transform 0.3s ease,
+              box-shadow 0.3s ease;
 }
 
-/* Three columns on wider screens */
-@media (min-width: 1000px) {
-  .gallery-item {
-    flex: 0 1 31%;
-  }
-}
-
+/* LevelUp: Hover Zoom Effect */
 .gallery-item img {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 8px;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-item:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.gallery-item[role="button"] {
+  cursor: pointer;
+}
+
+.gallery-item:focus-visible {
+  outline: 3px solid #e03c31;
+  outline-offset: 3px;
+}
+
+.gallery-item h3 {
+  font-size: 18px;
+  line-height: 1.4;
 }
 
 .gallery-item p {
-  margin-top: 10px;
-  padding: 5px;
   font-size: 14px;
+  line-height: 1.5;
+  color: #4b5870;
 }
 
-/* Placeholder content */
+.gallery-item a {
+  display: inline-block;
+  margin-top: 8px;
+  color: #b32424;
+  font-weight: bold;
+}
+
+/* Placeholder */
 .placeholder {
-  flex: 1 1 100%;
   text-align: center;
-  padding: 40px;
-  color: #666;
+  padding: 50px 20px;
+  color: #dce8fa;
+  line-height: 1.6;
 }
 
 .placeholder-icon {
   font-size: 48px;
   margin-bottom: 20px;
+}
+
+/* Modal Window */
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.modal[hidden] {
+  display: none;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #ffffff;
+  color: #172b4d;
+  padding: 30px;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+#closeModal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: #e03c31;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+#modalTitle {
+  padding-right: 45px;
+  margin-bottom: 18px;
+  font-size: 24px;
+}
+
+#modalImage {
+  width: 100%;
+  max-height: 55vh;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+#modalDate {
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #43536e;
+}
+
+#modalExplanation {
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* Tablet and Desktop */
+@media (min-width: 600px) {
+  .filters {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  input[type="date"],
+  .filters button {
+    width: auto;
+  }
+
+  .gallery-item {
+    flex: 0 1 calc(50% - 12px);
+  }
+}
+
+/* Three Columns on Desktop */
+@media (min-width: 1000px) {
+  .gallery-item {
+    flex: 0 1 calc(33.333% - 15px);
+  }
+}
+
+/* Small Mobile Screens */
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+
+  .logo {
+    width: 110px;
+  }
+
+  .site-header {
+    gap: 10px;
+  }
+
+  .modal-content {
+    padding: 22px 16px;
+  }
+
+  #modalTitle {
+    font-size: 20px;
+  }
 }
